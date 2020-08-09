@@ -46,8 +46,8 @@ class Admin {
      * @return void
      */
     public function enqueue_scripts() {
-        wp_enqueue_style( 'baseplugin-admin' );
-        wp_enqueue_script( 'baseplugin-admin' );
+        wp_enqueue_style( 'plusadmin-admin' );
+        wp_enqueue_script( 'plusadmin-admin' );
     }
 
     /**

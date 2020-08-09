@@ -36,7 +36,7 @@ class Assets {
         foreach ( $scripts as $handle => $script ) {
             $deps      = isset( $script['deps'] ) ? $script['deps'] : false;
             $in_footer = isset( $script['in_footer'] ) ? $script['in_footer'] : false;
-            $version   = isset( $script['version'] ) ? $script['version'] : BASEPLUGIN_VERSION;
+            $version   = isset( $script['version'] ) ? $script['version'] : PLUSADMIN_VERSION;
 
             wp_register_script( $handle, $script['src'], $deps, $version, $in_footer );
         }
@@ -53,7 +53,7 @@ class Assets {
         foreach ( $styles as $handle => $style ) {
             $deps = isset( $style['deps'] ) ? $style['deps'] : false;
 
-            wp_register_style( $handle, $style['src'], $deps, BASEPLUGIN_VERSION );
+            wp_register_style( $handle, $style['src'], $deps, PLUSADMIN_VERSION );
         }
     }
 
@@ -66,26 +66,26 @@ class Assets {
         $prefix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.min' : '';
 
         $scripts = [
-            'baseplugin-runtime' => [
-                'src'       => BASEPLUGIN_ASSETS . '/js/runtime.js',
-                'version'   => filemtime( BASEPLUGIN_PATH . '/assets/js/runtime.js' ),
+            'plusadmin-runtime' => [
+                'src'       => PLUSADMIN_ASSETS . '/js/runtime.js',
+                'version'   => filemtime( PLUSADMIN_PATH . '/assets/js/runtime.js' ),
                 'in_footer' => true
             ],
-            'baseplugin-vendor' => [
-                'src'       => BASEPLUGIN_ASSETS . '/js/vendors.js',
-                'version'   => filemtime( BASEPLUGIN_PATH . '/assets/js/vendors.js' ),
+            'plusadmin-vendor' => [
+                'src'       => PLUSADMIN_ASSETS . '/js/vendors.js',
+                'version'   => filemtime( PLUSADMIN_PATH . '/assets/js/vendors.js' ),
                 'in_footer' => true
             ],
-            'baseplugin-frontend' => [
-                'src'       => BASEPLUGIN_ASSETS . '/js/frontend.js',
-                'deps'      => [ 'jquery', 'baseplugin-vendor', 'baseplugin-runtime' ],
-                'version'   => filemtime( BASEPLUGIN_PATH . '/assets/js/frontend.js' ),
+            'plusadmin-frontend' => [
+                'src'       => PLUSADMIN_ASSETS . '/js/frontend.js',
+                'deps'      => [ 'jquery', 'plusadmin-vendor', 'plusadmin-runtime' ],
+                'version'   => filemtime( PLUSADMIN_PATH . '/assets/js/frontend.js' ),
                 'in_footer' => true
             ],
-            'baseplugin-admin' => [
-                'src'       => BASEPLUGIN_ASSETS . '/js/admin.js',
-                'deps'      => [ 'jquery', 'baseplugin-vendor', 'baseplugin-runtime' ],
-                'version'   => filemtime( BASEPLUGIN_PATH . '/assets/js/admin.js' ),
+            'plusadmin-admin' => [
+                'src'       => PLUSADMIN_ASSETS . '/js/admin.js',
+                'deps'      => [ 'jquery', 'plusadmin-vendor', 'plusadmin-runtime' ],
+                'version'   => filemtime( PLUSADMIN_PATH . '/assets/js/admin.js' ),
                 'in_footer' => true
             ]
         ];
@@ -101,14 +101,14 @@ class Assets {
     public function get_styles() {
 
         $styles = [
-            'baseplugin-style' => [
-                'src' =>  BASEPLUGIN_ASSETS . '/css/style.css'
+            'plusadmin-style' => [
+                'src' =>  PLUSADMIN_ASSETS . '/css/style.css'
             ],
-            'baseplugin-frontend' => [
-                'src' =>  BASEPLUGIN_ASSETS . '/css/frontend.css'
+            'plusadmin-frontend' => [
+                'src' =>  PLUSADMIN_ASSETS . '/css/frontend.css'
             ],
-            'baseplugin-admin' => [
-                'src' =>  BASEPLUGIN_ASSETS . '/css/admin.css'
+            'plusadmin-admin' => [
+                'src' =>  PLUSADMIN_ASSETS . '/css/admin.css'
             ],
         ];
 

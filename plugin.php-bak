@@ -8,7 +8,7 @@ Author: Your Name
 Author URI: https://example.com/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: baseplugin
+Text Domain: plusadmin
 Domain Path: /languages
 */
 
@@ -126,12 +126,12 @@ final class Base_Plugin {
      * @return void
      */
     public function define_constants() {
-        define( 'BASEPLUGIN_VERSION', $this->version );
-        define( 'BASEPLUGIN_FILE', __FILE__ );
-        define( 'BASEPLUGIN_PATH', dirname( BASEPLUGIN_FILE ) );
-        define( 'BASEPLUGIN_INCLUDES', BASEPLUGIN_PATH . '/includes' );
-        define( 'BASEPLUGIN_URL', plugins_url( '', BASEPLUGIN_FILE ) );
-        define( 'BASEPLUGIN_ASSETS', BASEPLUGIN_URL . '/assets' );
+        define( 'PLUSADMIN_VERSION', $this->version );
+        define( 'PLUSADMIN_FILE', __FILE__ );
+        define( 'PLUSADMIN_PATH', dirname( PLUSADMIN_FILE ) );
+        define( 'PLUSADMIN_INCLUDES', PLUSADMIN_PATH . '/includes' );
+        define( 'PLUSADMIN_URL', plugins_url( '', PLUSADMIN_FILE ) );
+        define( 'PLUSADMIN_ASSETS', PLUSADMIN_URL . '/assets' );
     }
 
     /**
@@ -151,13 +151,13 @@ final class Base_Plugin {
      */
     public function activate() {
 
-        $installed = get_option( 'baseplugin_installed' );
+        $installed = get_option( 'plusadmin_installed' );
 
         if ( ! $installed ) {
-            update_option( 'baseplugin_installed', time() );
+            update_option( 'plusadmin_installed', time() );
         }
 
-        update_option( 'baseplugin_version', BASEPLUGIN_VERSION );
+        update_option( 'plusadmin_version', PLUSADMIN_VERSION );
     }
 
     /**
@@ -176,21 +176,21 @@ final class Base_Plugin {
      */
     public function includes() {
 
-        require_once BASEPLUGIN_INCLUDES . '/Assets.php';
+        require_once PLUSADMIN_INCLUDES . '/Assets.php';
 
         if ( $this->is_request( 'admin' ) ) {
-            require_once BASEPLUGIN_INCLUDES . '/Admin.php';
+            require_once PLUSADMIN_INCLUDES . '/Admin.php';
         }
 
         if ( $this->is_request( 'frontend' ) ) {
-            require_once BASEPLUGIN_INCLUDES . '/Frontend.php';
+            require_once PLUSADMIN_INCLUDES . '/Frontend.php';
         }
 
         if ( $this->is_request( 'ajax' ) ) {
-            // require_once BASEPLUGIN_INCLUDES . '/class-ajax.php';
+            // require_once PLUSADMIN_INCLUDES . '/class-ajax.php';
         }
 
-        require_once BASEPLUGIN_INCLUDES . '/Api.php';
+        require_once PLUSADMIN_INCLUDES . '/Api.php';
     }
 
     /**
@@ -235,7 +235,7 @@ final class Base_Plugin {
      * @uses load_plugin_textdomain()
      */
     public function localization_setup() {
-        load_plugin_textdomain( 'baseplugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'plusadmin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
     /**
@@ -266,4 +266,4 @@ final class Base_Plugin {
 
 } // Base_Plugin
 
-$baseplugin = Base_Plugin::init();
+$plusadmin = Base_Plugin::init();
