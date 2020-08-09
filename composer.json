@@ -2,7 +2,7 @@
     "name": "kubeecms/kskin",
     "description": "Adds a lot of useful (Super) Admin links to the Admin Bar...",
     "keywords": ["kcms-kskin", "kskin", "skin", "kubeecms", "network", "administration", "menu", "kcms", "kubee"],
-    "type": "wordpress-muplugin",
+    "type": "wordpress-plugin",
     "homepage": "https://github.com/KubeeCMS/kskin/",
     "license": "GPL-2.0-or-later",
     "authors": [
